@@ -67,13 +67,25 @@ function GeraCPF() {
 
         evento: function() {
             this.gera.addEventListener('click', () => {
-                this.adicionaCPF();
+                this.geraCpf();
             })
         },
 
-        adicionaCPF: function() {
+        geraCpf: function() {
             const cpf = new GeradorCPF();
-            this.campo.value = cpf.cria();
+            this.adicionaCPF(cpf.cria())
+        },
+
+        adicionaCPF: function(cpf) {
+            this.campo.value = this.cpfFormatado(cpf)
+        },
+
+        cpfFormatado: function(cpf) {
+            return (cpf.slice(0, 3) + '.' +
+                    cpf.slice(3, 6) + '.' +
+                    cpf.slice(6, 9) + '-' +
+                    cpf.slice(9, 12)
+                    );
         }
     }
 }

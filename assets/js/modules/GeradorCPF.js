@@ -26,6 +26,7 @@
             return ac;
         }, 0)
         const digito = (11 - (total % 11));
+        if(digito > 9) digito = 0;
         return digito;
     }
 
